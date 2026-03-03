@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>Central Park 3D 场景预览</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui,
+          -system-ui, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #1c1f2b 0%, #060712 60%);
+        color: #f5f5f5;
+      }
+
+      #scene-container {
+        position: fixed;
+        inset: 0;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: rgba(10, 12, 24, 0.8);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #4ade80;
+        box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.25);
+      }
+
+      .hint {
+        opacity: 0.8;
+      }
+
+      .hint kbd {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 4px;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        background: rgba(15, 23, 42, 0.8);
+        font-size: 11px;
+      }
+
+      @media (max-width: 600px) {
+        .overlay {
+          left: 50%;
+          right: auto;
+          transform: translateX(-50%);
+          max-width: calc(100% - 32px);
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scene-container"></div>
+    <div class="overlay">
+      <span class="dot"></span>
+      <span>Central Park 3D 场景</span>
+      <span class="hint">拖拽旋转，滚轮缩放，右键平移</span>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+          "three/examples/jsm/controls/OrbitControls": "https://unpkg.com/three@0.161.0/examples/jsm/controls/OrbitControls.js",
+          "three/examples/jsm/loaders/PLYLoader": "https://unpkg.com/three@0.161.0/examples/jsm/loaders/PLYLoader.js"
+        }
+      }
+    </script>
+    <script type="module" src="./main.js"></script>
+  </body>
+  </html>
+
