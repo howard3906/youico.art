@@ -55,7 +55,7 @@ function init() {
 
   const loader = new PLYLoader();
   loader.load(
-    "https://cdn.huhu.ai/653d6e9ff9c50b885e28e81ab95cc02d9264860e20290879f91a035d871844c3.ply",
+    "https://github.com/howard3906/youico.art/releases/download/test0.1/653d6e9ff9c50b885e28e81ab95cc02d9264860e20290879f91a035d871844c3.ply",
     (geometry) => {
       const position = geometry.getAttribute("position");
       if (!position) {
