@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <title>Central Park 3D 场景预览</title>
+    <title>3D 点云预览</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       * {
@@ -80,9 +80,10 @@
     <div id="scene-container"></div>
     <div class="overlay">
       <span class="dot"></span>
-      <span>Central Park 3D 场景</span>
+      <span>3D 点云预览</span>
+      <button id="btn-open" style="font-size:11px;">选择文件</button>
       <span class="hint">拖拽旋转，滚轮缩放，右键平移；1/2/3 切点数</span>
-      <span id="status-text" class="hint" style="margin-left: 10px; opacity: 0.9;">模型加载中...</span>
+      <span id="status-text" class="hint" style="margin-left: 10px; opacity: 0.9;">请选择一个 PLY 文件</span>
       <button id="btn-partial" style="font-size:11px; margin-left:8px;">仅展示部分</button>
       <button id="btn-showAll" style="font-size:11px;">展示全部</button>
       <button id="btn-interactive" style="font-size:11px;">关闭交互</button>

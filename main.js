@@ -35,6 +35,7 @@ let liquidParams = {
 };
 let isLiquidMode = false;
 let lastPointer = null;
+let currentModelURL = null;
 
 init();
 animate();
@@ -161,7 +162,26 @@ function init() {
     });
   }
 
-  loadAndRenderPointCloud();
+  // 文件选择
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  fileInput.accept = ".ply";
+  fileInput.style.display = "none";
+  document.body.appendChild(fileInput);
+
+  document.getElementById("btn-open")?.addEventListener("click", () => {
+    fileInput.click();
+  });
+
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+    if (currentModelURL) URL.revokeObjectURL(currentModelURL);
+    currentModelURL = URL.createObjectURL(file);
+    setStatusText(`加载 ${file.name} ...`, false);
+    loadAndRenderPointCloud();
+  });
+
   window.addEventListener("resize", onWindowResize);
 }
 
@@ -191,8 +211,12 @@ function clearPointCloud() {
 
 async function loadAndRenderPointCloud() {
   clearPointCloud();
+  const url = loadModelURL();
+  if (!url) {
+    setStatusText("请选择一个 PLY 文件", false);
+    return;
+  }
   const loader = new PLYLoader();
-  const url = await loadModelURL();
   loader.load(
     url,
     (geometry) => {
@@ -615,9 +639,7 @@ function createSurfaceMesh(geometry) {
 }
 
 function loadModelURL() {
-  const remoteUrl = "https://portfolio-index-1258344804.cos.ap-chongqing.myqcloud.com/model.ply";
-  setStatusText("加载远程模型 model.ply...", false);
-  return remoteUrl;
+  return currentModelURL;
 }
 
 function onQualityKeyDown(event) {
