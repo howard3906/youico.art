@@ -81,7 +81,15 @@
     <div class="overlay">
       <span class="dot"></span>
       <span>Central Park 3D 场景</span>
-      <span class="hint">拖拽旋转，滚轮缩放，右键平移</span>
+      <span class="hint">拖拽旋转，滚轮缩放，右键平移；1/2/3 切点数</span>
+      <span id="status-text" class="hint" style="margin-left: 10px; opacity: 0.9;">模型加载中...</span>
+      <button id="btn-partial" style="font-size:11px; margin-left:8px;">仅展示部分</button>
+      <button id="btn-showAll" style="font-size:11px;">展示全部</button>
+      <button id="btn-interactive" style="font-size:11px;">关闭交互</button>
+      <button id="btn-outline" style="font-size:11px;">线</button>
+      <button id="btn-surface" style="font-size:11px;">面</button>
+      <button id="btn-subdivide" style="font-size:11px;">细分 x1</button>
+      <label style="font-size:11px; margin-left:4px; display:inline-flex; align-items:center; gap:3px;">面色<input id="surface-color" type="color" value="#efc3f9" style="width:24px;height:24px;border:0;background:none;padding:0;"></label>
     </div>
 
     <script type="importmap">
@@ -89,7 +97,8 @@
         "imports": {
           "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
           "three/examples/jsm/controls/OrbitControls": "https://unpkg.com/three@0.161.0/examples/jsm/controls/OrbitControls.js",
-          "three/examples/jsm/loaders/PLYLoader": "https://unpkg.com/three@0.161.0/examples/jsm/loaders/PLYLoader.js"
+          "three/examples/jsm/loaders/PLYLoader": "https://unpkg.com/three@0.161.0/examples/jsm/loaders/PLYLoader.js",
+          "three/examples/jsm/math/ConvexHull": "https://unpkg.com/three@0.161.0/examples/jsm/math/ConvexHull.js"
         }
       }
     </script>
